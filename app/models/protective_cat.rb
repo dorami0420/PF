@@ -1,0 +1,2 @@
+class ProtectiveCat < ApplicationRecord
+end
