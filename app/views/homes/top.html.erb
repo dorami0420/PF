@@ -1,2 +1,48 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<html>
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class="col-md-3">
+
+
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<h1>welcome to
+<i class="fas fa-book"></i>
+
+<strong>Nyanstagram</strong>
+!!
+</h1>
+
+<p>In
+<i class="fas fa-book"></i>
+<strong>Nyanstagram,</strong><br>
+
+you can share and exchange your opinions , inpressions , and emotions<br>
+
+about various books!</p>
+
+
+<%= link_to 'Log in', new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in"  %>
+
+
+<%= link_to 'Sign up', new_user_registration_path, class:"btn btn-success btn-sm btn-block sign_up"  %>
+
+</div>
+</div>
+</div>
+
+
+ <footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+</html>
