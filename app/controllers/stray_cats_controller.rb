@@ -1,13 +1,39 @@
 class StrayCatsController < ApplicationController
   def new
+    @stray_cats = StrayCat.new
   end
 
   def index
+    @stray_cats = StrayCat.page(params[:page])
+
+  end
+  
+  def create
+    @stray_cat = StrayCat.new(pstray_cats_params)
+    @stray_cat.user_id = current_user.id
+  if @stray_cat.save
+    redirect_to stray_cats_path
+  else
+      render :new
   end
 
   def show
+    @stray_cats = StrayCats.find(params[:id])
+    @post_comment = PostComment.new
   end
 
-  def edit
+  def destroy
+    stray_cat = StrayCats.find(params[:id])
+    stray_cat.destroy
+    redirect_to  stray_cats_path
   end
+
+
+ private
+
+  def stray_cat_params
+    params.require(:stray_cat).permit(:name, :image, :caption)
+  end
+
+  end 
 end

@@ -1,2 +1,46 @@
 <h1>ProtectiveCats#show</h1>
-<p>Find me in app/views/protective_cats/show.html.erb</p>
+<div>
+  <%= image_tag @protective_cat.get_image %>
+  <p>名：<%= @protective_cat.name %></p>
+  <p>説明：<%= @protective_cat.caption %></p>
+  <p>投稿ユーザー画像：<%= image_tag @protective_cat.user.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム：<%= @protective_cat.user.name %></p>
+  <p>投稿日：<%= @protective_cat.created_at.strftime('%Y/%m/%d') %></p>
+   <% if @protective_cat.user == current_user %>
+    <%= link_to "削除", post_image_path(@protective_cat), method: :delete %>
+    <% end %>
+    <% if @protective_cat.favorited_by?(current_user) %>
+
+    <p>
+      <%= link_to protective_cat_favorites_path(@protective_cat), method: :delete do %>
+        ♥<%= @protective_cat.favorites.count %> いいね
+      <% end %>
+    </p>
+      <% else %>
+    <p>
+      <%= link_to protective_cat_favorites_path(@protective_cat), method: :post do %>
+        ♡<%= @protective_cat.favorites.count %> いいね
+      <% end %>
+    </p>
+      <% end %>
+</div>
+
+<div>
+    <p>コメント件数：<%= @protective_cat.post_comments.count %></p>
+  <% @protective_cat.post_comments.each do |post_comment| %>
+    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+     <% if post_comment.user == current_user %>
+      <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+    <% end %>
+
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [@protective_cat, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

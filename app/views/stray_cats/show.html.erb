@@ -1,2 +1,46 @@
 <h1>StrayCats#show</h1>
-<p>Find me in app/views/stray_cats/show.html.erb</p>
+<div>
+  <%= image_tag @stray_cats.get_image %>
+  <p>名：<%= @stray_cat.name %></p>
+  <p>説明：<%= @stray_cat.caption %></p>
+  <p>投稿ユーザー画像：<%= image_tag @stray_cat.user.get_profile_image(100,100) %></p>
+  <p>ユーザーネーム：<%= @stray_cat.user.name %></p>
+  <p>投稿日：<%= @stray_cat.created_at.strftime('%Y/%m/%d') %></p>
+   <% if @stray_cat.user == current_user %>
+    <%= link_to "削除", post_image_path(@stray_cat), method: :delete %>
+    <% end %>
+    <% if @stray_cat.favorited_by?(current_user) %>
+
+    <p>
+      <%= link_to stray_cat_favorites_path(@stray_cat), method: :delete do %>
+        ♥<%= @stray_cat.favorites.count %> いいね
+      <% end %>
+    </p>
+      <% else %>
+    <p>
+      <%= link_to stray_cat_favorites_path(@stray_cat), method: :post do %>
+        ♡<%= @stray_cat.favorites.count %> いいね
+      <% end %>
+    </p>
+      <% end %>
+</div>
+
+<div>
+    <p>コメント件数：<%= @stray_cat.post_comments.count %></p>
+  <% @stray_cat.post_comments.each do |post_comment| %>
+    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+     <% if post_comment.user == current_user %>
+      <%= link_to "削除", stray_cat_post_comment_path(post_comment.stray_cat, post_comment), method: :delete %>
+    <% end %>
+
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [@stray_cat, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
