@@ -1,2 +1,12 @@
 <h1>ProtectiveCats#index</h1>
-<p>Find me in app/views/protective_cats/index.html.erb</p>
+<% @protective_cats.each do |protective_cat| %>
+<div>
+  <%= link_to  protective_cat_path(protective_cat.id) do %>
+    <%= image_tag protective_cat.get_image %>
+  <% end %>
+  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>ショップ名：<%= protective_cat.name %></p>
+  <p>説明：<%= protective_cat.caption %></p>
+  <p>ユーザーネーム：<%= protective_cat.user.name %></p>
+</div>
+<% end %>」
