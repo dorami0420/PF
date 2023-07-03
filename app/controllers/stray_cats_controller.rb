@@ -1,6 +1,6 @@
 class StrayCatsController < ApplicationController
   def new
-    @stray_cats = StrayCat.new
+    @stray_cat = StrayCat.new
   end
 
   def index
