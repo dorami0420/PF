@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 2023_06_28_123212) do
 
   create_table "protective_cats", force: :cascade do |t|
     t.string "name"
+    t.string "neuter"
+    t.string "coloer"
+    t.string "pla"
+    t.string "gender"
+    t.text "helth"
     t.text "caption"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -76,6 +81,8 @@ ActiveRecord::Schema.define(version: 2023_06_28_123212) do
   end
 
   create_table "stray_cats", force: :cascade do |t|
+    t.string "color"
+    t.string "place"
     t.text "caption"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

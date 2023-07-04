@@ -32,7 +32,7 @@ class StrayCatsController < ApplicationController
  private
 
   def stray_cat_params
-    params.require(:stray_cat).permit(:name, :image, :caption)
+    params.require(:stray_cat).permit(:name, :image, :caption, :color, :place)
   end
 
   end 
