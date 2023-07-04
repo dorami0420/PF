@@ -9,7 +9,7 @@ class StrayCatsController < ApplicationController
   end
   
   def create
-    @stray_cat = StrayCat.new(pstray_cats_params)
+    @stray_cat = StrayCat.new(pstray_cat_params)
     @stray_cat.user_id = current_user.id
   if @stray_cat.save
     redirect_to stray_cats_path

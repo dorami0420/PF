@@ -4,7 +4,7 @@ class CreateProtectiveCats < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :neuter
       t.string :coloer
-      t.string :pla
+      t.string :plac
       t.string :gender
       t.text :helth
       t.text :caption
