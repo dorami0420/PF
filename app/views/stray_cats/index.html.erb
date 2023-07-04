@@ -1,12 +1,6 @@
 <h1>StrayCats#index</h1>
+ <li>
+    <%= link_to '新規投稿', new_stray_cat_path %>
+  </li>
 
-</div<% @stray_cats.each do |stray_cat| %>
-<div>
-  <%= link_to stray_cat_path(stray_cat.id) do %>
-    <%= image_tag post_image.get_image %>
-  <% end %>
-  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-  <p>説明：<%= post_image.caption %></p>
-  <p>ユーザーネーム：<%= stray_cat.user.name %></p>
-</div>
-<% end %>」
+<%= render 'list', stray_cats: @stray_cats %>
