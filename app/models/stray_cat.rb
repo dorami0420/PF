@@ -4,7 +4,7 @@ class StrayCat < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
-  validates :name, presence: true
+  #validates :name, presence: true
   validates :image, presence: true
   
   def get_image

@@ -11,10 +11,11 @@ class StrayCatsController < ApplicationController
   def create
     @stray_cat = StrayCat.new(stray_cat_params)
     @stray_cat.user_id = current_user.id
-  if @stray_cat.save
+    if @stray_cat.save
     redirect_to stray_cats_path
-  else
+    else
       render :new
+    end
   end
 
   def show
@@ -32,8 +33,7 @@ class StrayCatsController < ApplicationController
  private
 
   def stray_cat_params
-    params.require(:stray_cat).permit(:name, :image, :caption, :color, :place)
+    params.require(:stray_cat).permit(:image, :caption, :color, :place)
   end
 
-  end 
 end

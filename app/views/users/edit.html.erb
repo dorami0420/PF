@@ -1,6 +1,6 @@
 <h2>プロフィール編集</h2>
 <p><%= @user.nickname %>の会員情報編集</p>
-<%= form_with model: @user,url: admin_customer_path(@user.id), method: :PATCH do |f| %>
+<%= form_with model: @user,url: user_path(@user.id), method: :PATCH do |f| %>
  
   <label for="inputLast_name">氏名</label>
   <%= f.text_field :Last_name, autofocus: true, id:"inputLast_name", placeholder:"Last_name"%>

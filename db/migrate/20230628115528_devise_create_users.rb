@@ -15,7 +15,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
       
       t.string :nickname
-       t.string :last_name, null: false
+      t.string :last_name, null: false
       t.string :first_name, null: false
       t.string :last_name_kana, null: false
       t.string :first_name_kana, null: false
