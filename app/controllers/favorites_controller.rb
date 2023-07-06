@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    stray_cat = StrayCat.find(params[:post_image_id])
+    stray_cat = StrayCat.find(params[:stray_cat_id])
     favorite = current_user.favorites.find_by(stray_cat_id: stray_cat.id)
     favorite.destroy
     redirect_to stray_cat_path(stray_cat)

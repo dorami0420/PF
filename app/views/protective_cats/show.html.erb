@@ -7,7 +7,7 @@
   <p>ユーザーネーム：<%= @protective_cat.user.name %></p>
   <p>投稿日：<%= @protective_cat.created_at.strftime('%Y/%m/%d') %></p>
    <% if @protective_cat.user == current_user %>
-    <%= link_to "削除", post_image_path(@protective_cat), method: :delete %>
+    <%= link_to "削除", protective_cat_path(@protective_cat), method: :delete %>
     <% end %>
     <% if @protective_cat.favorited_by?(current_user) %>
 
