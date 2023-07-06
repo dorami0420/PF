@@ -1,6 +1,6 @@
 class PostCommentsController < ApplicationController
   def create
-    stray_cat = PostImage.find(params[:stray_cat_id])
+    stray_cat = StrayCat.find(params[:stray_cat_id])
     comment = current_user.stray_cats.new(stray_cat_params)
     comment.stray_cat_id = stray_cat.id
     comment.save

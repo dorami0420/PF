@@ -1,0 +1,2 @@
+class PPostComment < ApplicationRecord
+end

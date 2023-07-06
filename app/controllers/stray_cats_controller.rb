@@ -19,7 +19,7 @@ class StrayCatsController < ApplicationController
   end
 
   def show
-    @stray_cats = StrayCats.find(params[:id])
+    @stray_cat = StrayCat.find(params[:id])
     @post_comment = PostComment.new
   end
 

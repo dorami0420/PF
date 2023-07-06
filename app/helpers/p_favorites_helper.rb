@@ -1,0 +1,2 @@
+module PFavoritesHelper
+end

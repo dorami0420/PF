@@ -1,0 +1,2 @@
+class PFavorite < ApplicationRecord
+end

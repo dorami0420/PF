@@ -1,0 +1,2 @@
+class PFavoritesController < ApplicationController
+end

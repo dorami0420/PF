@@ -1,0 +1,2 @@
+class PPostCommentsController < ApplicationController
+end
