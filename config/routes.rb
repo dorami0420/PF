@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   end
 
   resources :protective_cats do
-    resource :favorites, only: [:create, :destroy]
-    resources :post_comments, only: [:create, :destroy]
+    resource :p_favorites, only: [:create, :destroy]
+    resources :p_post_comments, only: [:create, :destroy]
   end
   
   namespace :admin do

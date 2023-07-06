@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 2023_07_06_060932) do
   create_table "protective_cats", force: :cascade do |t|
     t.string "name"
     t.string "neuter"
-    t.string "coloer"
-    t.string "pla"
+    t.string "color"
+    t.string "place"
     t.string "gender"
     t.text "helth"
     t.text "caption"
