@@ -24,7 +24,7 @@ class StrayCatsController < ApplicationController
   end
 
   def destroy
-    stray_cat = StrayCats.find(params[:id])
+    stray_cat = StrayCat.find(params[:id])
     stray_cat.destroy
     redirect_to  stray_cats_path
   end

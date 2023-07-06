@@ -1,8 +1,8 @@
 class ProtectiveCat < ApplicationRecord
     has_one_attached :image
   belongs_to :user
-  has_many :post_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :p_post_comments, dependent: :destroy
+  has_many :p_favorites, dependent: :destroy
   
   validates :name, presence: true
   validates :image, presence: true
