@@ -4,10 +4,10 @@ class ProtectiveCatsController < ApplicationController
   end
 
   def create
-    @protective_cat = ProtectiveCat.new(post_image_params)
+    @protective_cat = ProtectiveCat.new(protective_cat_params)
     @protective_cat.user_id = current_user.id
   if @protective_cat.save
-    redirect_to post_images_path
+    redirect_to protective_cat_path
   else
       render :new
   end
@@ -35,7 +35,7 @@ class ProtectiveCatsController < ApplicationController
  private
 
   def protective_cat_params
-    params.require(:protective_cat).permit(:shop_name, :image, :caption)
+    params.require(:protective_cat).permit(:name, :image, :caption, :neuter, :color, :place, :gender, :health)
   end
 
 end

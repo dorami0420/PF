@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2023_07_06_060932) do
     t.string "color"
     t.string "place"
     t.string "gender"
-    t.text "helth"
+    t.text "health"
     t.text "caption"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

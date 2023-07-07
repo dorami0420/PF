@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @stray_cats = @user.stray_cats.page(params[:page])
+    @protective_cats = @user.protective_cats.page(params[:page])
   end
 
   def edit
