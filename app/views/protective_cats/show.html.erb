@@ -14,8 +14,8 @@
    <% if @protective_cat.user == current_user %>
     <%= link_to "削除", protective_cat_path(@protective_cat), method: :delete %>
     <% end %>
-    <% if @protective_cat.p_favorited_by?(current_user) %>
-
+    
+    <% if @protective_cat.favorited_by?(current_user) %>
     <p>
       <%= link_to protective_cat_p_favorites_path(@protective_cat), method: :delete do %>
         ♥<%= @protective_cat.p_favorites.count %> いいね
@@ -37,14 +37,14 @@
     <%= p_post_comment.user.nickname %>
     <%= p_post_comment.created_at.strftime('%Y/%m/%d') %><%= p_post_comment.comment %>
      <% if p_post_comment.user == current_user %>
-      <%= link_to "削除", protective_cat_p_post_comment_path(p_post_comment.protective_cat, post_comment), method: :delete %>
+      <%= link_to "削除", protective_cat_p_post_comment_path(@protective_cat, p_post_comment), method: :delete %>
     <% end %>
 
   <% end %>
 </div>
 
 <div>
-  <%= form_with model: [@protective_cat, @p_post_comment] do |f| %>
+  <%= form_with model: [@protective_cat, @post_comment], url: protective_cat_p_post_comments_path(@protective_cat.id) do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>

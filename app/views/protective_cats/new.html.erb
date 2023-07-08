@@ -3,6 +3,9 @@
 <%= form_with model: @protective_cat do |f| %>
   <h4>画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
+  <h4>名前</h4>
+  <%= f.text_area :name %>
+  
  <h4>色</h4>
   <%= f.text_area :color %>
   <h4>性別</h4>

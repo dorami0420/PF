@@ -3,12 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
          has_one_attached :profile_image
   has_many :stray_cats, dependent: :destroy
   has_many :protective_cats, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy    
+  has_many :favorites, dependent: :destroy
+  has_many :p_post_comments, dependent: :destroy
+  has_many :p_favorites, dependent: :destroy
 
     def get_profile_image(width, height)
     unless profile_image.attached?

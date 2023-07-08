@@ -7,7 +7,7 @@ class ProtectiveCatsController < ApplicationController
     @protective_cat = ProtectiveCat.new(protective_cat_params)
     @protective_cat.user_id = current_user.id
   if @protective_cat.save
-    redirect_to protective_cat_path
+    redirect_to protective_cat_path(@protective_cat.id)
   else
       render :new
   end
@@ -26,7 +26,7 @@ class ProtectiveCatsController < ApplicationController
   end
 
   def destroy
-    protective_cat = ProtectiveCats.find(params[:id])
+    protective_cat = ProtectiveCat.find(params[:id])
     protective_cat.destroy
     redirect_to protective_cats_path
   end

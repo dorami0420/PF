@@ -16,7 +16,7 @@ class ProtectiveCat < ApplicationRecord
   end
   
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+    p_favorites.exists?(user_id: user.id)
   end
   
 end
