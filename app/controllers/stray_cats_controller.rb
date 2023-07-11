@@ -1,10 +1,13 @@
 class StrayCatsController < ApplicationController
+  
   def new
     @stray_cat = StrayCat.new
   end
 
   def index
     @stray_cats = StrayCat.page(params[:page])
+    @q =  StrayCat.ransack(params[:q])
+    @stray_cat = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
 
   end
   

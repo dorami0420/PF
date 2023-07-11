@@ -1,4 +1,7 @@
 <h1>StrayCats#index</h1>
+
+<%= render 'search', q: @q, url: stray_cats_path %>
+
  <li>
     <%= link_to '新規投稿', new_stray_cat_path %>
   </li>
