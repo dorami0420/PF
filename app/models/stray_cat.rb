@@ -3,9 +3,9 @@ class StrayCat < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   validates :image, presence: true
-  
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -13,9 +13,16 @@ class StrayCat < ApplicationRecord
     end
     image
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["color", "place", "caption"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["favorites", "image_attachment", "image_blob", "post_comments", "user"]
+  end
 end
