@@ -15,7 +15,9 @@ class ProtectiveCatsController < ApplicationController
   end
 
   def index
-   @protective_cats = ProtectiveCat.page(params[:page])
+    @protective_cats = ProtectiveCat.page(params[:page])
+    @q =  ProtectiveCat.ransack(params[:q])
+    @protecyive_cat = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
 
   end
 

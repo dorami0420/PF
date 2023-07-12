@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 
   devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
     sessions: "admin/admins/sessions",
@@ -9,12 +9,12 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     sessions: "users/sessions",
   }
-  
+
   root to: "homes#top"
   get "homes/about"
-    
+
   resources :users, only: [:show, :edit, :update]
-  
+
   resources :stray_cats do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
@@ -24,11 +24,12 @@ Rails.application.routes.draw do
     resource :p_favorites, only: [:create, :destroy]
     resources :p_post_comments, only: [:create, :destroy]
   end
-  
+
   namespace :admin do
     root to: "home#top"
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :show, :destroy]
     resources :post_comments, only: [:destroy]
+     resources :p_post_comments, only: [:destroy]
   end
 end
 
