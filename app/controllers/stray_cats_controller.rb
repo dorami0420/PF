@@ -5,10 +5,10 @@ class StrayCatsController < ApplicationController
   end
 
   def index
-    @stray_cats = StrayCat.page(params[:page])
+    #@stray_cats = StrayCat.page(params[:page])
     @q =  StrayCat.ransack(params[:q])
-    @stray_cat = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
-
+    @stray_cats = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
+    #byebug
   end
   
   def create

@@ -26,10 +26,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: "home#top"
-    resources :users, only: [:index, :show, :destroy]
-    resources :post_comments, only: [:destroy]
-     resources :p_post_comments, only: [:destroy]
+    root to: 'top_page#index'
+    resources :users, only: [:index, :destroy]
+   resources :comments, only: [:index, :destroy]
   end
 end
 
