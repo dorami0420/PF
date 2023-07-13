@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-
+    
   devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
     sessions: "admin/admins/sessions",
   }
@@ -26,7 +25,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: 'top_page#index'
+    get 'comments/index'
+    get 'homes#index'
     resources :users, only: [:index, :destroy]
    resources :comments, only: [:index, :destroy]
   end
