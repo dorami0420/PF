@@ -14,16 +14,14 @@ def show
 
 end
 
-def update
-  @user = User.find(params[:id])
-      if @user.update(user_params)
-        flash[:notice] = "You have updated user successfully."
-          redirect_to admin_users_path
-      else
-          render :edit
-      end
-end
 
+
+def destroy
+    user = User.find(params[:id])  
+    user.destroy
+    redirect_to '/lists'  
+end
+  
 private
 
 def user_params
