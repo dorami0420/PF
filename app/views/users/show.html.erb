@@ -1,6 +1,13 @@
 <div>
   <h3><%= @user.nickname %></h3>
+  
+<% if @user.profile_image.attached? %>
   <%= image_tag @user.get_profile_image(100,100) %>
+<% else %>
+  <%= image_tag 'no_image', size: "300x300" %>
+<% end %>
+  
+  
    <% if @user == current_user %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>

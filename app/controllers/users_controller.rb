@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  
-  
+
+
 
   def show
     @user = User.find(params[:id])
@@ -23,9 +23,9 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
-      params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email)
+      params.require(:user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :telephone_number, :email, :profile_image)
   end
 
   def is_matching_login_user
@@ -33,5 +33,5 @@ class UsersController < ApplicationController
     unless user.id == current_user.id
       redirect_to user_path
     end
-  end    
+  end
 end
