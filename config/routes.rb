@@ -25,9 +25,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get "/" => 'homes#index'
     get 'comments/index'
-    get 'homes/index'
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :show, :destroy]
    resources :comments, only: [:index, :destroy]
   end
 end

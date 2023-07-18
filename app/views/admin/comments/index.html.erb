@@ -1,17 +1,34 @@
 <h1>Admin::Comments#index</h1>
 <h1>コメント一覧</h1>
 
-<% @comments.each do |comment| %>
+<% @post_comments.each do |comment| %>
 
 <div>
 <p>氏名</p>
- <%= user.nickname %>
+ <%= comment.user.nickname %>
 
 
 <p>コメント</p>
- <%= user.comment %>
-
+ <%= comment.comment %>
+<%= link_to "削除", admin_comment_path(comment.id, type: :post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
 </div>
 
  <% end %>
+ 
+ <% @p_post_comments.each do |p_comment| %>
+
+<div>
+<p>氏名</p>
+ <%= p_comment.user.nickname %>
+
+
+<p>コメント</p>
+ <%= p_comment.comment %>
+<%= link_to "削除", admin_comment_path(comment.id, type: :p_post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+</div>
+ <% end %>
+ 
+ 
+ 

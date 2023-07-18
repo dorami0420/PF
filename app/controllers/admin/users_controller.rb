@@ -17,11 +17,11 @@ end
 
 
 def destroy
-    user = User.find(params[:id])  
+    user = User.find(params[:id])
     user.destroy
-    redirect_to '/users'  
+    redirect_to '/admin/users'
 end
-  
+
 private
 
 # def user_params

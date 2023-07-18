@@ -13,13 +13,6 @@ class User < ApplicationRecord
   has_many :p_favorites, dependent: :destroy
 
 
-# def get_profile_image(width, height)
-#     if profile_image.attached?
-#       profile_image
-#     else
-#       'no_image.jpg'
-#     end
-# end
 
     def get_profile_image(width, height)
     unless profile_image.attached?
