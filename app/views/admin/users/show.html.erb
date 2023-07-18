@@ -1,0 +1,25 @@
+<p><%= @user.last_name + " " + @user.first_name %>の会員詳細</p>
+
+<p>氏名</p>
+<%= @suer.last_name + " " + @user.first_name %>
+
+
+<p>カナ</p>
+<%= @user.last_name_kana + " " + @user.first_name_kana %>
+
+<p>郵便番号</p>
+<%= @user.postal_code %>
+
+
+<p>住所</p>
+<%= @user.address %>
+
+
+<p>電話番号</p>
+<%= @user.telephone_number %>
+
+
+<p>メールアドレス</p>
+<%= @user.email %>
+
+<%= link_to "Destroy", admin_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
