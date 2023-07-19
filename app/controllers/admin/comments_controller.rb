@@ -12,7 +12,7 @@ class Admin::CommentsController < ApplicationController
       comment = PPostComment.find(params[:id])
     end
     comment.destroy
-    redirect_to '/comments'
+    redirect_to '/admin/comments'
   end
 
 end

@@ -25,7 +25,8 @@
 
 <p>コメント</p>
  <%= p_comment.comment %>
-<%= link_to "削除", admin_comment_path(comment.id, type: :p_post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+ 
+<%= link_to "削除", admin_comment_path(p_comment.id, type: :p_post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
 </div>
  <% end %>
