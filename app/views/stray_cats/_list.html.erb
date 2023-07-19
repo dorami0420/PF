@@ -15,10 +15,11 @@
 
             <% end %>
           </p>
-          
+
           <p class="card-text">説明：<%= stray_cat.caption %></p>
           <span><i class="fas fa-user"></i> By <%= stray_cat.user.nickname %> ｜ </span>
-          <span><%= link_to "#{stray_cat.post_comments.count} コメント", stray_cat_path(stray_cat.id), class:"text-dark" %></span>
+          <span><%= link_to "#{stray_cat.post_comments.count} コメント", stray_cat_path(stray_cat.id), class:"text-dark" %> | </span>
+          
         </div>
       </div>
     </div>
@@ -26,3 +27,4 @@
   <% end %>
   <%= paginate stray_cats %>
 </div>
+

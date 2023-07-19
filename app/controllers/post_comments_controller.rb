@@ -4,7 +4,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(stray_cat_params)
     comment.stray_cat_id = stray_cat.id
     comment.save
-   redirect_to stray_cats_path(stray_cat)
+   redirect_to stray_cat_path(stray_cat)
   end
 
   def destroy
