@@ -19,7 +19,20 @@
           <p class="card-text">説明：<%= stray_cat.caption %></p>
           <span><i class="fas fa-user"></i> By <%= stray_cat.user.nickname %> ｜ </span>
           <span><%= link_to "#{stray_cat.post_comments.count} コメント", stray_cat_path(stray_cat.id), class:"text-dark" %> | </span>
-          
+
+           <span><% if stray_cat.favorited_by?(current_user) %>
+
+                  <%= link_to stray_cat_favorites_path(stray_cat), method: :delete do %>
+                    ♥<%= stray_cat.favorites.count %> いいね
+                  <% end %>
+
+                   <% else %>
+                    <%= link_to stray_cat_favorites_path(stray_cat), method: :post do %>
+                    ♡<%= stray_cat.favorites.count %> いいね
+                  <% end %>
+
+                  <% end %>
+            </span>
         </div>
       </div>
     </div>

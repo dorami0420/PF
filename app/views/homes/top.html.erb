@@ -1,49 +1,39 @@
-
-
-
+<!DOCTYPE html>
 <html>
 
-<main class="mb-auto">
+<head>
+  <!-- ヘッドコンテンツがあれば追加 -->
+</head>
+
+<body>
+
+  <main class="d-flex flex-column justify-content-center">
     <div class="container">
+      <div class="col-md-6 mx-auto mt-5">
+        <div>
+          <%= flash[:notice] %>
+        </div>
+        <h1>Welcome to <strong>Nyanstagram</strong>!!</h1>
+        <p>In <strong>Nyanstagram</strong>, you can share and exchange your opinions, impressions, and emotions about cats!</p>
+        <div class="row">
+          <p class="ml-3"><%= link_to 'Log in', new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in" %></p>
+          <p class="ml-3"><%= link_to 'Sign up', new_user_registration_path, class:"btn btn-success btn-sm btn-block sign_up" %></p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6 mx-auto mt-5">
+  </main>
 
-
-
-    <div>
-    <%= flash[:notice] %>
+  <footer>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="mx-auto">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
     </div>
+  </footer>
 
-
-    <h1>welcome to <strong>Nyanstagram</strong>  !!</h1>
-
-     <p>In<strong>Nyanstagram</strong>,
-
-     you can share and exchange your opinions , inpressions , and emotions about cats!</p>
-
-
-
-
-     <div class="row">
-     <p class="ml-3"><%= link_to 'Log in', new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in"  %></p>
-
-
-     <p class="ml-3"><%= link_to 'Sign up', new_user_registration_path, class:"btn btn-success btn-sm btn-block sign_up"  %></P>
-
-     </div>
-     </div>
-</main>    
-
-
-    <footer>
-     <div class="container mt-5">
-     	<div class="row">
-       	<div class="mx-auto">
-       		<p>CopyRight Infratop.inc</p>
-       	</div>
-       </div>
-       </div>
-     </div>
-   </footer>
+</body>
 
 </html>
+
