@@ -1,47 +1,49 @@
+
+
+
 <html>
-<div class="container px-5 px-sm-0">
-<div class="row">
-<div class="col-md-3">
 
-
-<div>
-  <%= flash[:notice] %>
-</div>
-
-<h1>welcome to
-
-<strong>Nyanstagram</strong>
-!!
-</h1>
-
-<p>In
-<i class="fa-solid fa-cat"></i>
-<strong>Nyanstagram,</strong><br>
-
-you can share and exchange your opinions , inpressions , and emotions<br>
-
-about cats!</p>
-
-
-<%= link_to 'Log in', new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in"  %>
-
-
-<%= link_to 'Sign up', new_user_registration_path, class:"btn btn-success btn-sm btn-block sign_up"  %>
-
-</div>
-</div>
-</div>
-
-
- <footer>
-  <div class="container mt-5">
-  	<div class="row">
-    	<div class="mx-auto">
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
+<main class="mb-auto">
+    <div class="container">
     </div>
+    <div class="col-md-6 mx-auto mt-5">
+
+
+
+    <div>
+    <%= flash[:notice] %>
     </div>
-  </div>
-</footer>
+
+
+    <h1>welcome to <strong>Nyanstagram</strong>  !!</h1>
+
+     <p>In<strong>Nyanstagram</strong>,
+
+     you can share and exchange your opinions , inpressions , and emotions about cats!</p>
+
+
+
+
+     <div class="row">
+     <p class="ml-3"><%= link_to 'Log in', new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in"  %></p>
+
+
+     <p class="ml-3"><%= link_to 'Sign up', new_user_registration_path, class:"btn btn-success btn-sm btn-block sign_up"  %></P>
+
+     </div>
+     </div>
+</main>    
+
+
+    <footer>
+     <div class="container mt-5">
+     	<div class="row">
+       	<div class="mx-auto">
+       		<p>CopyRight Infratop.inc</p>
+       	</div>
+       </div>
+       </div>
+     </div>
+   </footer>
 
 </html>
