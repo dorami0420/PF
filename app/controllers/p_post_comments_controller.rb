@@ -4,7 +4,7 @@ class PPostCommentsController < ApplicationController
     comment = current_user.p_post_comments.new(protective_cat_params)
     comment.protective_cat_id = protective_cat.id
     comment.save
-   redirect_to protective_cats_path(protective_cat)
+   redirect_to protective_cat_path(protective_cat)
   end
 
   def destroy

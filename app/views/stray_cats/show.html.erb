@@ -1,6 +1,4 @@
-<span><% if @stray_cat.user == current_user %>
-    <%= link_to "削除", stray_cat_path(@stray_cat), method: :delete %>
-    <% end %></span>
+
 <body class="d-flex flex-column vh-100">
 <main class ="mb-auto">
     <div class="post-detail py-5 bg-light">
@@ -10,7 +8,6 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-12 col-md-2">
-
                 <%= image_tag @stray_cat.user.get_profile_image(100,100), class:"mt-3 rounded-circle w-100"; %>
               </div>
 
@@ -21,19 +18,11 @@
                 <span><i class="fa-regular fa-calendar-days"></i><%= @stray_cat.created_at.strftime('%Y/%m/%d') %> | </span>
                 <span><i class="fa-regular fa-comment"></i><%= @stray_cat.post_comments.count %> | </span>
 
-                <span>
-                   <% if @stray_cat.favorited_by?(current_user) %>
+                <span>♥<%= @stray_cat.favorites.count %> いいね | </span>
 
-                  <%= link_to stray_cat_favorites_path(@stray_cat), method: :delete do %>
-                    ♥<%= @stray_cat.favorites.count %> いいね
-                  <% end %>
-
-                   <% else %>
-                    <%= link_to stray_cat_favorites_path(@stray_cat), method: :post do %>
-                    ♡<%= @stray_cat.favorites.count %> いいね
-                  <% end %>
-
-                  <% end %>
+                <span><% if @stray_cat.user == current_user %>
+                        <%= link_to "削除", stray_cat_path(@stray_cat), method: :delete %>
+                          <% end %>
                 </span>
               </div>
               </div>
@@ -45,10 +34,9 @@
               <div class="d-flex align-items-center">
                 <div class="col-sm-12 col-md-2 p-3 text-center">
                   <div><%= image_tag post_comment.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %></div>
-                  <p><%= post_comment.user.nickname %></p>
-                </div>
+                    <p><%= post_comment.user.nickname %></p>
+                  </div>
                 <div>
-                  
                   <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
                    <% if post_comment.user == current_user %>
                     <%= link_to "削除", stray_cat_post_comment_path(post_comment.stray_cat, post_comment), method: :delete %>
@@ -62,7 +50,7 @@
             <div class="new-comment card-text">
               <%= form_with model: [@stray_cat, @post_comment] do |f| %>
               <textarea rows="5" class="form-control" placeholder="コメントをここに" name="post_comment[comment]" id="post_comment_comment"></textarea>
-    
+
     <input type="submit" name="commit" value="送信する" class="btn btn-lg btn-info mt-2 float-right" data-disable-with="送信する">
 
   <% end %>
