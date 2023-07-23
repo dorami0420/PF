@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @stray_cats = @user.stray_cats.page(params[:page])
     @protective_cats = @user.protective_cats.page(params[:page])
   end
@@ -17,9 +17,11 @@ class UsersController < ApplicationController
 
   def update
      is_matching_login_user
-  @user = User.find(params[:id])
+  if @user = user
   @user.update(user_params)
   redirect_to user_path(@user.id)
+  else
+          render :edit
   end
 
   private
