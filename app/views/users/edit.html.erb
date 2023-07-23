@@ -1,37 +1,41 @@
+ <div class="col-sm-12 col-md-2">
+<%= @user.inspect %>
 <h2>プロフィール編集</h2>
 <p><%= @user.nickname %>の会員情報編集</p>
 <%= form_with model: @user,url: user_path(@user.id), method: :PATCH do |f| %>
 
- <h4>画像</h4>
-  <%= f.file_field :profile_image, accept: "image/*" %>
- 
+
+ <div>画像<%= f.file_field :profile_image, accept: "image/*" %></div>
+
   <label for="inputLast_name">氏名</label>
-  <%= f.text_field :Last_name, autofocus: true, id:"inputLast_name", placeholder:"Last_name"%>
+  <div class="input-groups"><%= f.text_field :last_name, autofocus: true, id:"inputLast_name", placeholder:"Last_name"%>
 
   <label for="inputFirst_name"></label>
-  <%= f.text_field :First_name, autofocus: true, id:"inputFirst_name", placeholder:"First_name"%><br>
+  <%= f.text_field :first_name, autofocus: true, id:"inputFirst_name", placeholder:"First_name"%></div>
 
   <label for="inputLast_name_kana">フリガナ</label>
-  <%= f.text_field :Last_name_kana, autofocus: true, id:"inputLast_name_kana", placeholder:"Last_name_kana"%>
+  <div class="input-groups"><%= f.text_field :last_name_kana, autofocus: true, id:"inputLast_name_kana", placeholder:"Last_name_kana"%>
 
   <label for="inputFirst_name_kana"></label>
-  <%= f.text_field :First_name_kana, autofocus: true, id:"inputFirst_name_kana", placeholder:"First_name_kana"%><br>
+  <%= f.text_field :first_name_kana, autofocus: true, id:"inputFirst_name_kana", placeholder:"First_name_kana"%></div>
 
 
   <label for="inputPostal_code">郵便番号</label>
-  <%= f.text_field :Postal_code, autofocus: true, id:"inputPostal_code", placeholder:"Postal_code"%><br>
+  <div><%= f.text_field :postal_code, autofocus: true, id:"inputPostal_code", placeholder:"Postal_code"%></div>
 
   <label for="inputAddress">住所</label>
-  <%= f.text_field :Address, autofocus: true, id:"inputAddress", placeholder:"Address"%><br>
+  <div><%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"Address"%></div>
 
   <label for="inputTelephone_number">電話番号</label>
-  <%= f.text_field :Telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"Telephone_number"%><br>
+  <div><%= f.text_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"Telephone_number"%></div>
 
-    <label for="inputEmail">メールアドレス</label>
-    
-  <%= f.text_field :Email, autofocus: true, id:"inputEmail", placeholder:"Email"%><br>
+  <label for="inputEmail">メールアドレス</label>
+
+  <div><%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"Email"%></div>
 
 
-  <%= f.submit "変更を保存" %>
+  <div><%= f.submit "変更を保存" %></div>
 
 <% end %>
+
+</div>
