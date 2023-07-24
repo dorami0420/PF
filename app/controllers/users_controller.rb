@@ -16,12 +16,13 @@ class UsersController < ApplicationController
   end
 
   def update
-     is_matching_login_user
+     #is_matching_login_user
   if @user = user
   @user.update(user_params)
   redirect_to user_path(@user.id)
   else
           render :edit
+  end
   end
 
   private

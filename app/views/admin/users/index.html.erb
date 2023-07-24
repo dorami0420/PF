@@ -1,26 +1,31 @@
+<html>
+ <body>
+  <p id="notice"></p>
+  <h1>Users</h1>
+  <table>
+   <thead>
+    <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Status</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+    <% @users.each do |user| %>
+    <td><%= link_to admin_user_path(user.id) do %>
+     <%= user.last_name + " " + user.first_name %>
+     <% end %></td>
+    <td><%= user.email %></td>
+    <td><% if user.is_deleted %>
+         <p>無効</p>
+        <% else %>
+         <p>有効</p>
+        <% end %></td>
+        <% end %>
+    </tr>
+   </tbody>
+  </table>
+ </body>
 
-<h1>会員一覧</h1>
-
-<% @users.each do |user| %>
-
-<div>
-<p>氏名</p>
- <%= link_to admin_user_path(user.id) do %>
- <%= user.last_name + " " + user.first_name %>
- <% end %>
-
-<p>メールアドレス</p>
- <%= user.email %>
-
-<p>ステータス</p>
-
- <% if user.is_deleted %>
-   <p>無効</p>
-
- <% else %>
-    <p>有効</p>
- <% end %>
-
-</div>
-
- <% end %>
+</html>
