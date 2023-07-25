@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :is_matching_login_user, only: [:edit, :update]
 
 
   def show
@@ -16,8 +16,7 @@ class UsersController < ApplicationController
   end
 
   def update
-     #is_matching_login_user
-  if @user = user
+  if @user = current_user
   @user.update(user_params)
   redirect_to user_path(@user.id)
   else
