@@ -1,21 +1,19 @@
 class StrayCatsController < ApplicationController
-  
+
   def new
     @stray_cat = StrayCat.new
   end
 
   def index
-    #@stray_cats = StrayCat.page(params[:page])
     @q =  StrayCat.ransack(params[:q])
     @stray_cats = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
-    #byebug
   end
-  
+
   def create
     @stray_cat = StrayCat.new(stray_cat_params)
     @stray_cat.user_id = current_user.id
     if @stray_cat.save
-    redirect_to stray_cats_path
+    redirect_to stray_cat_path(@stray_cat.id)
     else
       render :new
     end

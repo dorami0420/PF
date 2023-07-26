@@ -69,3 +69,6 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'ransack'
+
+gem 'gmaps4rails'
+gem 'geocoder'

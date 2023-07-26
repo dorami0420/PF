@@ -6,6 +6,9 @@ class CreateStrayCats < ActiveRecord::Migration[6.1]
       t.text :caption
       t.integer :user_id
       t.timestamps
+      t.string :address
+      t.float :latitude
+      t.float :longitude
     end
   end
 end
