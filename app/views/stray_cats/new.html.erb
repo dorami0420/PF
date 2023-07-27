@@ -1,14 +1,12 @@
 <h1>StrayCats#new</h1>
 <h1>画像投稿フォーム</h1>
 <%= form_with model: @stray_cat do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <h4>画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
 
   <h4>色</h4>
   <%= f.text_area :color %>
-
- <h4>場所</h4>
-  <%= f.text_area :place %>
 
   <h4>説明</h4>
   <%= f.text_area :caption %>

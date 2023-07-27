@@ -1,31 +1,31 @@
 <body class="d-flex flex-column vh-100">
 <main class ="mb-auto">
-    <div class="post-detail py-5 bg-light">
-      <div class="container">
-        <div class="card mx-auto mt-4 shadow-lg">
-          <%= image_tag @protective_cat.get_image %>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12 col-md-2">
-                <%= image_tag @protective_cat.user.get_profile_image(100,100), class:"mt-3 rounded-circle w-100"; %>
-              </div>
+  <div class="post-detail py-5 bg-light">
+    <div class="container">
+    　<div class="card mx-auto mt-4 shadow-lg">
+        <%= image_tag @protective_cat.get_image %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12 col-md-2">
+              <%= image_tag @protective_cat.user.get_profile_image(100,100), class:"mt-3 rounded-circle w-100"; %>
+            </div>
 
-              <div class="pt-4">
-                <p class="card-text">名前：<%= @protective_cat.name %></p>
-                  <p class="card-text">色：<%= @protective_cat.color %></p>
-                    <p class="card-text">性別：<%= @protective_cat.gender %></p>
-                      <p class="card-text">不妊・去勢：<%= @protective_cat.neuter %></p>
-                        <p class="card-text">健康状態：<%= @protective_cat.health %></p>
-                          <p class="card-text">説明：<%= @protective_cat.caption %></p>
+            <div class="pt-4">
+              <p class="card-text">名前：<%= @protective_cat.name %></p>
+              <p class="card-text">色：<%= @protective_cat.color %></p>
+              <p class="card-text">性別：<%= @protective_cat.gender %></p>
+              <p class="card-text">不妊・去勢：<%= @protective_cat.neuter %></p>
+              <p class="card-text">健康状態：<%= @protective_cat.health %></p>
+              <p class="card-text">説明：<%= @protective_cat.caption %></p>
 
-                          <span><i class="fa-solid fa-user"></i>By <%= @protective_cat.user.nickname %> | </span>
-                          <span><i class="fa-regular fa-calendar-days"></i><%= @protective_cat.created_at.strftime('%Y/%m/%d') %> | </span>
-                          <span><i class="fa-regular fa-comment"></i><%= @protective_cat.p_post_comments.count %> | </span>
-                          <span>♡<%= @protective_cat.p_favorites.count %> いいね | </span>
-                          <span><% if @protective_cat.user == current_user %>
-                                  <%= link_to "削除", protective_cat_path(@protective_cat), method: :delete %>
-                                    <% end %>
-                        </span>
+              <span><i class="fa-solid fa-user"></i>By <%= @protective_cat.user.nickname %> | </span>
+              <span><i class="fa-regular fa-calendar-days"></i><%= @protective_cat.created_at.strftime('%Y/%m/%d') %> | </span>
+              <span><i class="fa-regular fa-comment"></i><%= @protective_cat.p_post_comments.count %> | </span>
+              <span>♡<%= @protective_cat.p_favorites.count %> いいね | </span>
+              <span><% if @protective_cat.user == current_user %>
+                      <%= link_to "削除", protective_cat_path(@protective_cat), method: :delete %>
+                        <% end %>
+              </span>
                       </div>
                     </div>
                   </div>
@@ -33,22 +33,20 @@
               <div>
           <h4 class="col-sm-12 col-md-2 p-3 text-center">Comments</h4>
             <% @protective_cat.p_post_comments.each do |p_post_comment| %>
-            <div class="d-flex align-items-center">
-              <div class="col-sm-12 col-md-2 p-3 text-center">
+            <div class="row">
+              <div class="p-3 text-center col-md-4">
                 <div><%= image_tag p_post_comment.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %></div>
                   <p><%= p_post_comment.user.nickname %></p>
-                </div>
-              <div class="container">
+              </div>
+              <div class="p-3 col-md-4">
                  <p class="card-text"><%= p_post_comment.comment %></p>
-                   <div><%= p_post_comment.created_at.strftime('%Y/%m/%d') %> |
-                  <% if p_post_comment.user == current_user %>
+                   <%= p_post_comment.created_at.strftime('%Y/%m/%d') %> |
+                    <% if p_post_comment.user == current_user %>
                     <%= link_to "削除", protective_cat_p_post_comment_path(@protective_cat, p_post_comment), method: :delete %>
                   <% end %>
               </div>
             </div>
             <% end %>
-
-          </div>
         <hr>
         <div class="new-comment card-text">
           <%= form_with model: [@protective_cat, @post_comment], url: protective_cat_p_post_comments_path(@protective_cat.id) do |f| %>
