@@ -11,11 +11,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :p_post_comments, dependent: :destroy
   has_many :p_favorites, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
 validates :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, presence: true
-  #validates :first_name, presence: true
-  #validates :last_name_kana, presence: true
-
+ 
     def get_profile_image(width, height)
     unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')

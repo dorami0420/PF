@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rooms/show'
   devise_for :admins, path: 'admin', skip: [:registrations, :passwords], controllers: {
     sessions: "admin/admins/sessions",
   }
@@ -13,7 +14,9 @@ Rails.application.routes.draw do
   get "homes/about"
 
   resources :users, only: [:show, :edit, :update]
-
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show]
+  
   resources :stray_cats do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
