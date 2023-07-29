@@ -1,20 +1,85 @@
-<div class="user-in">
-<% @entries.each do |e| %>
-    <h3><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%></a></strong></h3>
+<div class="rooms">
+
+<% current_user.rooms.each do |room| %>
+
+ <div class="room">
+ <div class="room-name">
+<% @another_user = (room.users.where.not(id: current_user.id).to_a)[0] %>
+<%= link_to @another_user.nickname, room_messages_path(room) %>
+ </div>
+ </div>
+
 <% end %>
-<p>2人のDM❤️</p>
+
 </div>
 
-<div class="dmMain">
-    <% @messages.each do |m| %>
-        <strong><%= m.body %></strong>
-        <small><%= m.user.email %>さん</small><hr>
-    <% end %>
 
-    <%= form_for @message do |f| %>
-    <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "送信する" %>
-    <% end %>
+<%= form_with model: [@room, @message], html: {class: "form"},
+
+local: true do |f|%>
+
+ <div class="form-input">
+
+<%= f.text_field :content, class: 'form-message',
+
+placeholder: 'メッセージを入力してください' %>
+
+ <label class="form-image">
+
+ <span class="image-file">画像</span>
+
+<%= f.file_field :image, class: 'hidden' %>
+
+ </label>
+
+ </div>
+
+<%= f.submit '送信', class: 'form-submit' %>
+
+<% end %>
+
+<div class="messages">
+
+<%= render partial: 'message', collection: @messages %>
+
 </div>
+<div class="message">
+
+ <div class="upper-message">
+
+ <div class="message-user">
+
+<%= message.user.nickname%>
+
+ </div>
+
+ <div class="message-date">
+
+<%= l message.created_at%>
+
+ </div>
+
+ </div>
+
+ <div class="lower-message">
+
+ <div class="message-content">
+   <%= message.content%>
+
+ </div>
+
+<%= image_tag message.image.variant(resize:'500x500'), 
+
+class: 'message-image' if message.image.attached? %>
+
+ </div>
+
+</div>
+ 
+ <script type="text/javascript">
+
+const $scrollAuto = $('.messages');
+
+$scrollAuto.animate({scrollTop: ($scrollAuto[0].scrollHeight + 1000)}, 'fast')
+
+</script> 

@@ -6,24 +6,22 @@
   <% end %>
 </div>
 
-<div class="user-in">
-<h2><%= @user.email %></h2>
+<div class="chat-wrapper">
 
-<% if @user.id == current_user.id %>
-    <%= @msg %>
-<% else %>
-    <% if @isRoom == true %>
-        <p><%= link_to 'DMへ', room_path(@roomId) %></p>
-    <% else %>
-        <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e|%>
-                <% e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-        <%= f.submit "DMを開始する"%>
-        <% end %>
-    <% end %>
+<%= link_to(rooms_path(user_ids: [current_user.id, @profile.user.id]), method: :post) do %>
+
+ <div class="chat-btn">
+
+ <div class="chat-p">チャットで相談する</div>
+
+<%= image_tag 'chat.png', class: 'chat-logo'%>
+
+ </div>
+
 <% end %>
-</div>
+
+ </div>
+
 
 
 <%= render 'stray_cats/list', stray_cats: @stray_cats %>

@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get "homes/about"
-
+  
+  resources :rooms do
+  resources :messages
+  end
+  
   resources :users, only: [:show, :edit, :update]
-  resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show]
   
   resources :stray_cats do
     resource :favorites, only: [:create, :destroy]

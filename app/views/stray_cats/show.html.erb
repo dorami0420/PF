@@ -59,7 +59,9 @@
               <div class="row">
                 <div class="p-3 text-center col-md-4">
                   <div><%= image_tag post_comment.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %></div>
-                    <p><%= post_comment.user.nickname %></p>
+                      <p><%= link_to user_path(@stray_cat.user.id) do %>
+                      <%= post_comment.user.nickname %></p>
+                      <% end %>
                   </div>
                 <div class="p-3 col-md-4">
                 <p class="card-text"><%= post_comment.comment %></p>
