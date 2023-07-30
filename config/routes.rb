@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   get "homes/about"
   
   resources :rooms do
-    
-  resources :messages
+    resources :messages
   end
+  
+  post 'create_myroom', to: 'rooms#create_myroom'
   
   resources :users, only: [:show, :edit, :update]
   

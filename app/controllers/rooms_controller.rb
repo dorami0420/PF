@@ -4,6 +4,10 @@ class RoomsController < ApplicationController
   @room = Room.new
   end
 
+  def index
+    @rooms = Room.myrooms(current_user)
+  end
+
 
   def create
     @room = Room.new(room_params)
@@ -11,20 +15,19 @@ class RoomsController < ApplicationController
     redirect_to room_messages_path(@room)
   end
 
-  def show
-    # もしチャットルームがなかったら、新規ルームを作成する
-    current_user_room_ids = RoomUser.where(user_id: current_user).ids
-    partner_room_ids = RoomUser.where(user_id: params[:id]).ids
-    room_id = (current_user_room_ids && partner_room_ids).first
-
-    if room_id.present?
-      @room = Room.find(room_id)
-    else
-      partner = User.find(params[:id])
-      @room = Room.create(nickname: partner.nickname)
-      RoomUser.create(room_id: @room.id, user_id: current_user.id)
-      RoomUser.create(room_id: @room.id, user_id: params[:id])
+  def create_myroom
+    @room = Room.myroom(current_user, params[:user_id])
+    if @room.nil?
+      @room = Room.create!(owner_id: current_user.id, user_id: params[:user_id])
     end
+    redirect_to @room
+  end
+
+  def show
+    @room = Room.find(params[:id])
+    @user = @room.room_partner(current_user)
+    @message = current_user.messages.build
+    @messages = @room.messages
   end
 
 private

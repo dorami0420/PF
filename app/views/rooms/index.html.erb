@@ -1,25 +1,21 @@
-<div class="rooms">
-
-<% current_user.rooms.each do |room| %>
-
- <div class="room">
-
- <div class="room-name">
-
-<% @another_user = (room.users.where.not(id: current_user.id).to_a)[0] %>
-
-<%= link_to @another_user.nickname, room_messages_path(room) %>
-
- </div>
-
- <div class="delete-room">
-
-<%= link_to "×", room_path(room), method: :delete %>
-
- </div>
-
- </div>
-
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>dm一覧</h1>
+      <table class="rooms table">
+        <% @rooms.each do |room| %>
+          <tbody>
+          <tr class="room">
+            <td class="room-name">
+              <%= link_to "#{room.room_partner(current_user).nickname}さんとのルーム", room_path(room) %>
+            </td>
+      
+            <td class="delete-room">
+              <%= link_to "削除", room_path(room), method: :delete, class: "btn btn-xs btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+    </table>
+    </div>
+  </div>
 </div>

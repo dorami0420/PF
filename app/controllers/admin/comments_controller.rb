@@ -6,12 +6,14 @@ class Admin::CommentsController < ApplicationController
   end
 
   def destroy
-    if params[:type] == :post_comment
+    if params[:kind] == "post_comment"
       comment = PostComment.find(params[:id])
-    else
+    elsif params[:kind] == "p_post_comment"
       comment = PPostComment.find(params[:id])
+    else
+      comment = nil
     end
-    comment.destroy
+    comment.destroy if comment
     redirect_to '/admin/comments'
   end
 

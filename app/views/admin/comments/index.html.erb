@@ -2,21 +2,21 @@
   <p id="notice"></p>
   <h1>Comments</h1>
   <table style="width: 100%">
-   <thead>
-    <tr>
-    <th>Name</th>
-    <th>Gomments</th>
-    <th colspan="3"></th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-    <% @post_comments.each do |comment| %>
-    <td><%= comment.user.nickname %></td>
-    <td><%= comment.comment %></td>
-    <td><%= link_to "削除", admin_comment_path(comment.id, type: :post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-    </tr>
-    <% end %>
-   </tbody>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gomments</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% (@post_comments + @p_post_comments).each do |comment| %>
+        <tr>
+          <td><%= comment.user.nickname %></td>
+          <td><%= comment.comment %></td>
+          <td><%= link_to "削除", admin_comment_path(comment.id, kind: :post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
