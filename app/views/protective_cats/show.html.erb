@@ -18,7 +18,9 @@
               <p class="card-text">健康状態：<%= @protective_cat.health %></p>
               <p class="card-text">説明：<%= @protective_cat.caption %></p>
 
-              <span><i class="fa-solid fa-user"></i>By <%= @protective_cat.user.nickname %> | </span>
+              <span><i class="fa-solid fa-user"></i>
+              By <%= link_to user_path(@protective_cat.user.id) do %>
+              <%= @protective_cat.user.nickname %><% end %> | </span>
               <span><i class="fa-regular fa-calendar-days"></i><%= @protective_cat.created_at.strftime('%Y/%m/%d') %> | </span>
               <span><i class="fa-regular fa-comment"></i><%= @protective_cat.p_post_comments.count %> | </span>
               <span>♡<%= @protective_cat.p_favorites.count %> いいね | </span>
@@ -36,7 +38,9 @@
             <div class="row">
               <div class="p-3 text-center col-md-4">
                 <div><%= image_tag p_post_comment.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %></div>
-                  <p><%= p_post_comment.user.nickname %></p>
+                 <p><%= link_to user_path(@protective_cat.user.id) do %>
+                      <%= p_post_comment.user.nickname %></p>
+                      <% end %>
               </div>
               <div class="p-3 col-md-4">
                  <p class="card-text"><%= p_post_comment.comment %></p>

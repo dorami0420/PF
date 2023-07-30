@@ -15,7 +15,8 @@ class User < ApplicationRecord
   has_many :room_users
   has_many :rooms, through: :room_users
 
-validates :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, presence: true
+#validates :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, presence: true
+validates :last_name, presence: true
 
     def get_profile_image(width, height)
     unless profile_image.attached?

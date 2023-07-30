@@ -9,4 +9,4 @@
 #
 Admin.create!(email: "admin@test.com", password: "password")
 
-  
+#User.create!(id: 1, email: "a@a", nickname: "mil")

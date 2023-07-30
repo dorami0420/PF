@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "homes/about"
   
   resources :rooms do
+    
   resources :messages
   end
   

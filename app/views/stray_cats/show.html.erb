@@ -14,7 +14,9 @@
               <div class="pt-4">
                 <p class="card-text">説明：<%= @stray_cat.caption %></p>
 
-                <span><i class="fa-solid fa-user"></i> By <%= @stray_cat.user.nickname %> | </span>
+                 <span><i class="fa-solid fa-user"></i>
+                By <%= link_to user_path(@stray_cat.user.id) do %>
+                <%= @stray_cat.user.nickname %><% end %> | </span>
                 <span><i class="fa-regular fa-calendar-days"></i><%= @stray_cat.created_at.strftime('%Y/%m/%d') %> | </span>
                 <span><i class="fa-regular fa-comment"></i><%= @stray_cat.post_comments.count %> | </span>
 

@@ -2,27 +2,21 @@
   <h3><%= @user.nickname %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
    <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+    <p><%= link_to "Edit profile", edit_user_path(@user) %>
+    </p>
   <% end %>
-</div>
 
-<div class="chat-wrapper">
-
-<%= link_to(rooms_path(user_ids: [current_user.id, @profile.user.id]), method: :post) do %>
-
- <div class="chat-btn">
-
- <div class="chat-p">チャットで相談する</div>
-
-<%= image_tag 'chat.png', class: 'chat-logo'%>
-
- </div>
+<div>
+ <% if @user == current_user %>
+ <%= link_to "Chat Room Index", rooms_path %>
+ <% else %>
+ <%= link_to "Send text", room_path(@user.id) %>
 
 <% end %>
 
  </div>
 
-
+</div>
 
 <%= render 'stray_cats/list', stray_cats: @stray_cats %>
 
