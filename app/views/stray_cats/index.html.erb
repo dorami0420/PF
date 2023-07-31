@@ -1,9 +1,14 @@
-<h1>StrayCats#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1>StrayCats#index</h1>
+      
+      <div class="mt-4">
+        <%= render 'search', q: @q, url: stray_cats_path %>
+      </div>
+      <%= link_to '新規投稿', new_stray_cat_path, class: "btn btn-primary mt-4" %>
 
-<%= render 'search', q: @q, url: stray_cats_path %>
-
- <li>
-    <%= link_to '新規投稿', new_stray_cat_path %>
-  </li>
-
-<%= render 'list', stray_cats: @stray_cats %>
+      <%= render 'list', stray_cats: @stray_cats %>
+    </div>
+  </div>
+</div>

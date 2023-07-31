@@ -1,21 +1,22 @@
 <div class="card-list-container py-5">
   <% protective_cats.each do |p_cat| %>
-  <div class="card w-50 mx-auto mt-4 shadow-lg">
+   <div class="card w-100 mx-auto mt-4 shadow-lg">
     <%= link_to protective_cat_path(p_cat.id) do %>
-      <%= image_tag p_cat.get_image, class:"card-img-top"; %>
+      <%= image_tag(p_cat.image.variant(resize: "640X640^", crop: "640x640+0+0").processed, class:"card-img-top") %>
     <% end %>
     <div class="card-body">
       <div class="row">
-        <div class="col-2">
-          <%= image_tag p_cat.user.get_profile_image(100,100), class:"mt-3 rounded-circle"; %>
+        <div class="col-3">
+          <%= image_tag p_cat.user.get_profile_image(100,100), class:"mt-3 rounded-circle img-fluid" %>
         </div>
-        <div class="col-10">
+        <div class="col-9">
           <p class="card-title">
             <%= link_to(protective_cat_path(p_cat.id), class:"text-dark") do %>
 
             <% end %>
           </p>
           <p class="card-text">説明：<%= p_cat.caption %></p>
+          <p>
           <span><i class="fas fa-user"></i> By <%= p_cat.user.nickname %> ｜ </span>
           <span><%= link_to "#{p_cat.p_post_comments.count} コメント", protective_cat_path(p_cat.id), class:"text-dark" %> | </span>
           
@@ -32,6 +33,7 @@
 
                   <% end %>
             </span>
+            </p>
         </div>
       </div>
     </div>

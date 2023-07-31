@@ -9,9 +9,9 @@
             <td class="room-name">
               <%= link_to "#{room.room_partner(current_user).nickname}さんとのルーム", room_path(room) %>
             </td>
-      
+
             <td class="delete-room">
-              <%= link_to "削除", room_path(room), method: :delete, class: "btn btn-xs btn-danger" %>
+              <%= link_to "削除", room_path(room), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "#{room.room_partner(current_user).nickname}さんとの会話の履歴が全て削除されます。本当に削除しますか？" } %>
             </td>
           </tr>
         <% end %>

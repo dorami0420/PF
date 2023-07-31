@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
   end
 
   def create_myroom
+    #byebug
     @room = Room.myroom(current_user, params[:user_id])
     if @room.nil?
       @room = Room.create!(owner_id: current_user.id, user_id: params[:user_id])
@@ -28,6 +29,12 @@ class RoomsController < ApplicationController
     @user = @room.room_partner(current_user)
     @message = current_user.messages.build
     @messages = @room.messages
+  end
+
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to rooms_path
   end
 
 private

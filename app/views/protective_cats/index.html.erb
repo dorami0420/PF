@@ -1,8 +1,13 @@
-<h1>ProtectiveCats#index</h1>
-<%= render 'search', q: @q, url: protective_cats_path %>
-
- <li>
-    <%= link_to '新規投稿', new_protective_cat_path %>
-  </li>
-
-<%= render 'list', protective_cats: @protective_cats %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+     <h1>ProtectiveCats#index</h1>
+     
+      <div class="mt-4">
+        <%= render 'search', q: @q, url: protective_cats_path %>
+      </div>
+    <%= link_to '新規投稿', new_protective_cat_path, class: "btn btn-primary mt-4" %>
+    <%= render 'list', protective_cats: @protective_cats %>
+     </div>
+  </div>
+</div>
