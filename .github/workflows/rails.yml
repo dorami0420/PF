@@ -8,9 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-  with:
-    path: nyanstagram
     - uses: actions/setup-node@v2
     - name: Deploy
       env:
@@ -19,7 +16,7 @@ jobs:
         HOST_NAME: ${{ secrets.HOST_NAME }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd nyanstagram &&
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd PF &&
         git pull origin main &&
         ~/.rbenv/shims/bundle install &&
         ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production &&
