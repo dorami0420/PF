@@ -8,9 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-  　with:
-    path: nyanstagram
     - uses: actions/setup-node@v2
     - name: Deploy
       env:
