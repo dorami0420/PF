@@ -8,7 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-node@v2
+- uses: actions/checkout@v4
+  with:
+    path: nyanstagram
+- uses: actions/ setup-node@v2
+
     - name: Deploy
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
