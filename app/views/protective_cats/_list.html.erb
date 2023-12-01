@@ -18,7 +18,7 @@
           <p class="card-text">説明：<%= p_cat.caption %></p>
           <p>
           <span><i class="fas fa-user"></i> By <%= p_cat.user.nickname %> ｜ </span>
-          <span><%= link_to "#{p_cat.p_post_comments.count} コメント", protective_cat_path(p_cat.id), class:"text-dark" %> | </span>
+          <span><%= link_to "#{p_cat.p_post_comments.count} Comment", protective_cat_path(p_cat.id), class:"text-dark" %> | </span>
 
           <span><% if p_cat.favorited_by?(current_user) %>
 
