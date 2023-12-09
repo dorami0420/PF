@@ -23,7 +23,7 @@
                 <span>♥<%= @stray_cat.favorites.count %> いいね | </span>
 
                 <span><% if @stray_cat.user == current_user %>
-                        <%= link_to "削除", stray_cat_path(@stray_cat), method: :delete %>
+                        <%= link_to "delete", stray_cat_path(@stray_cat), method: :delete %>
                           <% end %>
                 </span>
               </div>
