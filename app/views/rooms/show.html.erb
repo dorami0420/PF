@@ -19,7 +19,7 @@
                 <% end %>
               </td>
               <td>
-                <% if message.user == current_user %> 
+                <% if message.user == current_user %>
                   <div class="text-right"><%= message.content %></div>
                   <div class="text-right"><%= image_tag message.image.variant(resize: "200x200^").processed if message.image.attached? %></div>
                 <% end %>
